@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val database = DatabaseHandler(this)
-        database.onCreate(SQLiteDatabase.create())
+        //database.onCreate(SQLiteDatabase.create()) Vad gör man här??
 
     }
 
