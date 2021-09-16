@@ -27,13 +27,15 @@ class DatabaseHandler(var context: Context) : SQLiteOpenHelper(context, Query.Fe
                 "${Query.FeedEntry.GAMES_PRICE} VARCHAR(256) )"
         db?.execSQL(createTableGames)
 
-        db?.setForeignKeyConstraintsEnabled(true)
+        /*
         val createTableOwnedGames = "CREATE TABLE owned_games\n" +
                 "owned_gamesID VARCHAR(256) PRIMARY KEY, " +
                 "FOREIGN KEY(userID) REFERENCES users(userID), "
                 "FOREIGN KEY(gameID) REFERENCES games(gameID) " +
                         ");"
         db?.execSQL(createTableOwnedGames)
+
+         */
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
