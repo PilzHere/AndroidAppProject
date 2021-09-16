@@ -9,6 +9,7 @@ import android.widget.Toast
 
 import ec.grouptwo.androidappproject.SQLite.DatabaseHandler
 import ec.grouptwo.androidappproject.SQLite.Query
+import ec.grouptwo.androidappproject.user.User
 
 class MainActivity : AppCompatActivity() {
     private lateinit var checkDatabaseButton: Button
