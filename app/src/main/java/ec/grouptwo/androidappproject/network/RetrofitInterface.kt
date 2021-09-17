@@ -8,7 +8,7 @@ import retrofit2.http.Query
 interface RetrofitInterface {
 
     @GET("games")
-    fun getSpelByTitle(@Query("title") title:String) : Call<List<Game?>?>?
+    fun getGameByTitle(@Query("title") title:String) : Call<List<Game?>?>?
 
 
     companion object {
