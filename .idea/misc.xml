@@ -3,10 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Gitprojekt/AndroidAppProject/app/src/main/res/layout/activity_logged_in.xml" value="0.18" />
-        <entry key="..\:/Gitprojekt/AndroidAppProject/app/src/main/res/layout/activity_main.xml" value="0.18" />
-        <entry key="..\:/Gitprojekt/AndroidAppProject/app/src/main/res/layout/activity_search_game.xml" value="0.22" />
-        <entry key="..\:/Gitprojekt/AndroidAppProject/app/src/main/res/layout/header.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.21041666666666667" />
       </map>
     </option>
   </component>

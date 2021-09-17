@@ -1,20 +1,29 @@
 package ec.grouptwo.androidappproject
 
 import android.content.Intent
+import android.widget.TextView
+import android.content.ContentValues
+import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
+import android.widget.Toast
 
-
-var userName : String? = null
-var passWord : String? = null
+import ec.grouptwo.androidappproject.SQLite.DatabaseHandler
+import ec.grouptwo.androidappproject.SQLite.Query
 
 class MainActivity : AppCompatActivity() {
+  var userName : String? = null
+  var passWord : String? = null
+  
+    private lateinit var checkDatabaseButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
+		
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+		
+		val database = DatabaseHandler(this)
+        val databaseHelper = database.writableDatabase
 
         val button = findViewById<Button>(R.id.btn_login)
         button.setOnClickListener{
@@ -30,8 +39,8 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, LoggedInActivity::class.java)
             intent.putExtra("USERNAME", userName)
             intent.putExtra("PASSWORD", passWord)
-            startActivity(intent);
-
-        }
+            startActivity(intent)
     }
 }
+}
+	
