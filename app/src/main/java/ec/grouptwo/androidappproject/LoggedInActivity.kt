@@ -23,19 +23,19 @@ class LoggedInActivity : AppCompatActivity() {
 
 
 
-        val button = findViewById<Button>(R.id.btn_logOut)
-        button.setOnClickListener{
+        val logOutButton = findViewById<Button>(R.id.btn_logOut)
+        logOutButton.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
 
-            startActivity(intent);
+            startActivity(intent)
 
         }
 
-        val textButton = findViewById<TextView>(R.id.btn_toSearch)
-                textButton.setOnClickListener{
+        val toSearchButton = findViewById<Button>(R.id.btn_toSearch)
+                toSearchButton.setOnClickListener{
                     val intent = Intent(this, SearchGameActivity::class.java)
 
-                    startActivity(intent);
+                    startActivity(intent)
 
                 }
     }
