@@ -7,6 +7,17 @@
     android:background="#9E231F1F">
 
 
+    <Button
+        android:id="@+id/btn_toAddOwnedGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Add Owned Game"
+        app:layout_constraintBottom_toTopOf="@+id/btn_logOut"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.668"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <include
         android:id="@+id/id"
         layout="@layout/header"
