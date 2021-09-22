@@ -4,8 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import android.util.Log
-import android.widget.TextView
 
 class LoggedInActivity : AppCompatActivity() {
 
@@ -38,6 +36,15 @@ class LoggedInActivity : AppCompatActivity() {
                     startActivity(intent)
 
                 }
+
+        val toAddOwnedGameButton = findViewById<Button>(R.id.btn_toAddOwnedGame)
+        toAddOwnedGameButton.setOnClickListener{
+            val intent = Intent(this, AddOwnedGameActivity::class.java)
+            intent.putExtra("USERID", "1") // TODO: This should be an int from database.
+            intent.putExtra("USERNAME", userName) // Do I need to do this here?
+
+            startActivity(intent)
+        }
     }
 
 }

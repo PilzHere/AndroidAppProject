@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
             passWord=R.id.pass_forLogin.toString()*/
 
             val intent = Intent(this, LoggedInActivity::class.java)
+            intent.putExtra("USERID", "1") // TODO: This should be an int from database.
             intent.putExtra("USERNAME", userName)
             intent.putExtra("PASSWORD", passWord)
             startActivity(intent)
