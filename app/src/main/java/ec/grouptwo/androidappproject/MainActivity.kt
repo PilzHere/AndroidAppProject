@@ -28,10 +28,10 @@ class MainActivity : AppCompatActivity() {
         val databaseHelper = database.writableDatabase
 
         val button = findViewById<Button>(R.id.btn_login)
-        button.setOnClickListener {
+        button.setOnClickListener{
 
-            val userNameText: TextView = findViewById(R.id.plt_forLogin)
-            val passwordText: TextView = findViewById(R.id.pass_forLogin)
+            val userNameText : TextView = findViewById(R.id.plt_forLogin)
+            val passwordText : TextView = findViewById(R.id.pass_forLogin)
 
             userName = userNameText.text.toString()
             passWord = passwordText.text.toString()
