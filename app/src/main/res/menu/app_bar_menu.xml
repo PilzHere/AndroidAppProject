@@ -2,9 +2,13 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/miTheme"
         android:icon="@drawable/ic_dark_theme"
+        android:title="@string/miTheme"
         app:showAsAction="ifRoom" />
     <item
+        android:id="@+id/miProfile"
         android:icon="@drawable/ic_user"
+        android:title="@string/miProfile"
         app:showAsAction="ifRoom" />
 </menu>
