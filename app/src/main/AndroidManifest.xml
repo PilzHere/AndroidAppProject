@@ -14,7 +14,8 @@
         android:theme="@style/Theme.AndroidAppProject">
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label=" Speljakt">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,19 +25,22 @@
 
         <activity
             android:name=".LoggedInActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label=" Speljakt">
 
         </activity>
 
         <activity
             android:name=".SearchGameActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label=" Speljakt">
 
         </activity>
         <activity
             android:name=".AddOwnedGameActivity"
             android:exported="true"
-            android:parentActivityName=".LoggedInActivity">
+            android:parentActivityName=".LoggedInActivity"
+            android:label=" Speljakt">
         </activity>
     </application>
 

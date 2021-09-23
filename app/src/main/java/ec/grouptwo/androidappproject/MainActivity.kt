@@ -6,6 +6,7 @@ import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.widget.Button
 import android.widget.Toast
 
@@ -13,23 +14,24 @@ import ec.grouptwo.androidappproject.SQLite.DatabaseHandler
 import ec.grouptwo.androidappproject.SQLite.Query
 
 class MainActivity : AppCompatActivity() {
-  var userName : String? = null
-  var passWord : String? = null
-  
+    var userName: String? = null
+    var passWord: String? = null
+
     private lateinit var checkDatabaseButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
-		
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-		
-		val database = DatabaseHandler(this)
+        getSupportActionBar()?.hide()
+
+        val database = DatabaseHandler(this)
         val databaseHelper = database.writableDatabase
 
         val button = findViewById<Button>(R.id.btn_login)
-        button.setOnClickListener{
+        button.setOnClickListener {
 
-            val userNameText : TextView = findViewById(R.id.plt_forLogin)
-            val passwordText : TextView = findViewById(R.id.pass_forLogin)
+            val userNameText: TextView = findViewById(R.id.plt_forLogin)
+            val passwordText: TextView = findViewById(R.id.pass_forLogin)
 
             userName = userNameText.text.toString()
             passWord = passwordText.text.toString()
@@ -41,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("USERNAME", userName)
             intent.putExtra("PASSWORD", passWord)
             startActivity(intent)
+        }
     }
-}
 }
 	

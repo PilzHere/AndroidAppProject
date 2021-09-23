@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Menu
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -14,7 +15,7 @@ import ec.grouptwo.androidappproject.SQLite.Query
 import ec.grouptwo.androidappproject.game.Game
 import ec.grouptwo.androidappproject.network.APIClient
 
-class AddOwnedGameActivity : AppCompatActivity() {
+class AddOwnedGameActivity : BaseActivity() {
     private lateinit var textGameDatabaseMessage: TextView
     private lateinit var textGameTitleFound: TextView
     private lateinit var etGameTitle: EditText
@@ -53,7 +54,8 @@ class AddOwnedGameActivity : AppCompatActivity() {
 
         buttonAddGameToList.setOnClickListener {
             if (etGameTitle.text.isNotEmpty() && gameFound && currentGameId.isNotEmpty() && currentGame != null) {
-                val userId = intent.getStringExtra("USERID") // TODO: this should be used instead of "1".
+                val userId =
+                    intent.getStringExtra("USERID") // TODO: this should be used instead of "1".
 
                 val gameId = currentGameId
 
@@ -106,10 +108,15 @@ class AddOwnedGameActivity : AppCompatActivity() {
         }
     }
 
-    private fun gameAlreadyOwnedbyUser(db: DatabaseHandler, userId: String, gameId: String): Boolean { // userid should be int
+    private fun gameAlreadyOwnedbyUser(
+        db: DatabaseHandler,
+        userId: String,
+        gameId: String
+    ): Boolean { // userid should be int
         // Define a projection that specifies which columns from the database
         // you will actually use after this query.
-        val projection = arrayOf(Query.FeedEntry.OWNED_GAMES_USERID, Query.FeedEntry.OWNED_GAMES_GAMEID)
+        val projection =
+            arrayOf(Query.FeedEntry.OWNED_GAMES_USERID, Query.FeedEntry.OWNED_GAMES_GAMEID)
 
         // Filter results WHERE "title" = 'My Title'
         val selection = "${Query.FeedEntry.OWNED_GAMES_USERID} = ?"
@@ -120,13 +127,13 @@ class AddOwnedGameActivity : AppCompatActivity() {
 
         val dbReader = db.readableDatabase
         val cursor = dbReader.query(
-                Query.FeedEntry.TABLE_OWNED_GAMES,   // The table to query
-                projection,             // The array of columns to return (pass null to get all)
-                selection,              // The columns for the WHERE clause
-                selectionArgs,          // The values for the WHERE clause
-                null,                   // don't group the rows
-                null,                   // don't filter by row groups
-                sortOrder               // The sort order
+            Query.FeedEntry.TABLE_OWNED_GAMES,   // The table to query
+            projection,             // The array of columns to return (pass null to get all)
+            selection,              // The columns for the WHERE clause
+            selectionArgs,          // The values for the WHERE clause
+            null,                   // don't group the rows
+            null,                   // don't filter by row groups
+            sortOrder               // The sort order
         )
 
         // check if gameid and userid already matches

@@ -4,12 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import android.view.Menu
 
-class LoggedInActivity : AppCompatActivity() {
+
+class LoggedInActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_logged_in)
+
 
 
 
@@ -46,5 +49,4 @@ class LoggedInActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
 }
