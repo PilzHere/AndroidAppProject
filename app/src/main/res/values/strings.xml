@@ -8,4 +8,6 @@
     <string name="btnAddOwnedGame">Add owned game</string>
     <string name="Search">Search</string>
     <string name="Logout">Log out</string>
+    <string name="miTheme">Theme</string>
+    <string name="miProfile">Profile</string>
 </resources>
