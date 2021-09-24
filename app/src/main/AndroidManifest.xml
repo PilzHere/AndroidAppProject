@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidAppProject">
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -21,13 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".LoggedInActivity"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true"/>
         <activity
             android:name=".CreateUserActivity"
             android:exported="true">
@@ -36,9 +33,7 @@
 
         <activity
             android:name=".SearchGameActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"/>
         <activity
             android:name=".AddOwnedGameActivity"
             android:exported="true"
