@@ -17,6 +17,9 @@ class LoggedInActivity : BaseActivity() {
         val userName = intent.getStringExtra("USERNAME")
         val passWord = intent.getStringExtra("PASSWORD")
 
+        val newUserName = intent.getStringExtra("NEWUSERNAME")
+        val newPassWord = intent.getStringExtra("NEWPASSWORD")
+
         //println("Hello " + userName + " your password is " + passWord)
 
 
