@@ -1,16 +1,11 @@
 package ec.grouptwo.androidappproject
 
 import android.content.Intent
-import android.widget.TextView
-import android.content.ContentValues
-import android.database.sqlite.SQLiteDatabase
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toast
-
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import ec.grouptwo.androidappproject.SQLite.DatabaseHandler
-import ec.grouptwo.androidappproject.SQLite.Query
 
 class MainActivity : AppCompatActivity() {
     var userName: String? = null
@@ -21,11 +16,11 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        supportActionBar?.hide()
 
         val database = DatabaseHandler(this)
         val databaseHelper = database.writableDatabase
 
-        //database.addUser()
         val button = findViewById<Button>(R.id.btn_login)
         button.setOnClickListener {
 
@@ -43,10 +38,6 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("PASSWORD", passWord)
             startActivity(intent)
         }
-
-
-
-
     }
 }
 	

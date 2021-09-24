@@ -12,33 +12,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="Add Owned Game"
+        android:text="@string/btnAddOwnedGame"
         app:layout_constraintBottom_toTopOf="@+id/btn_logOut"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.668"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <include
-        android:id="@+id/id"
-        layout="@layout/header"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/btn_logOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Log out"
+        android:text="@string/Logout"
         app:iconTint="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.126"
         app:rippleColor="#FFFFFF" />
 
@@ -46,11 +36,12 @@
         android:id="@+id/btn_toSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="Search"
+        android:layout_marginBottom="8dp"
+        android:text="@string/Search"
         app:layout_constraintBottom_toTopOf="@+id/btn_logOut"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_toAddOwnedGame" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

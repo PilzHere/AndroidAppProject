@@ -50,6 +50,7 @@ class APIClient {
             }
         })
     }
+
     fun setNewGameList(newGameList: List<Game>) {
         gameList = newGameList
     }
