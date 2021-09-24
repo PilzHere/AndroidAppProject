@@ -5,4 +5,6 @@
     <string name="userName" />
     <string name="password" />
     <string name="btn_Search" />
+    <string name="createUserPassword" />
+    <string name="createUserName" />
 </resources>
