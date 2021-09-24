@@ -3,8 +3,6 @@ package ec.grouptwo.androidappproject
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
 
 
 class LoggedInActivity : BaseActivity() {
@@ -36,7 +34,6 @@ class LoggedInActivity : BaseActivity() {
             val intent = Intent(this, SearchGameActivity::class.java)
 
             startActivity(intent)
-
         }
 
         val toAddOwnedGameButton = findViewById<Button>(R.id.btn_toAddOwnedGame)
