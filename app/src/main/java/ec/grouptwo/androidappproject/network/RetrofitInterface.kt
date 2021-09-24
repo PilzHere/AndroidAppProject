@@ -8,8 +8,7 @@ import retrofit2.http.Query
 interface RetrofitInterface {
 
     @GET("games")
-    fun getGameByTitle(@Query("title") title:String) : Call<List<Game?>?>?
-
+    fun getGameByTitle(@Query("title") title: String): Call<List<Game?>?>?
 
     companion object {
         const val BASE_URL = "https://www.cheapshark.com/api/1.0/"
