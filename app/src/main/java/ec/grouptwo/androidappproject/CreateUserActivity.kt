@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import ec.grouptwo.androidappproject.SQLite.DatabaseHandler
 
 class CreateUserActivity : AppCompatActivity() {
 
@@ -25,6 +26,10 @@ class CreateUserActivity : AppCompatActivity() {
 
             val intent = Intent(this, LoggedInActivity::class.java)
             //intent.putExtra("USERID", "1")
+
+             val DatabaseHandler1 = DatabaseHandler(baseContext)
+            DatabaseHandler1.addUser("1234", userName!!, passWord!!, "dark")
+
             intent.putExtra("NEWUSERNAME", userName)
             intent.putExtra("NEWPASSWORD", passWord)
             startActivity(intent)

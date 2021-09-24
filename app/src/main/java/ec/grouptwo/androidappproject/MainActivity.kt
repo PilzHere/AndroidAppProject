@@ -44,17 +44,17 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-
-
-    }
-
-
         val button2 = findViewById<Button>(R.id.btn_createUserScreen)
         button2.setOnClickListener{
             val intent = Intent(this, CreateUserActivity::class.java)
             startActivity(intent)
 
         }
+
+
+    }
+
+
+
 }
 	
