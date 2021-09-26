@@ -4,12 +4,17 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.provider.BaseColumns
 import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.OWNED_GAMES_GAMEID
 import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.OWNED_GAMES_USERID
 import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.TABLE_GAMES
 import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.TABLE_OWNED_GAMES
 import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.TABLE_USERS
 import java.io.File
+import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.USERS_PASSWORD
+import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.USERS_THEME
+import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.USERS_USERID
+import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.USERS_USERNAME
 
 
 class DatabaseHandler(var context: Context) :
@@ -22,8 +27,6 @@ class DatabaseHandler(var context: Context) :
     override fun onOpen(db: SQLiteDatabase?) {
         super.onOpen(db)
         deleteUserByID(8, db)
-
-
     }
 
     private fun deleteUserByID(id : Int, db: SQLiteDatabase?){
@@ -35,6 +38,7 @@ class DatabaseHandler(var context: Context) :
         val file = File(fileName)
         return file.exists()
     }
+    
 
     private fun createDB(db: SQLiteDatabase?) {
         val createTableUsers = "CREATE TABLE ${Query.FeedEntry.TABLE_USERS} (" +
@@ -49,7 +53,7 @@ class DatabaseHandler(var context: Context) :
                 "${Query.FeedEntry.GAMES_NAME} VARCHAR(256), " +
                 "${Query.FeedEntry.GAMES_PRICE} VARCHAR(256) )\n"
         db?.execSQL(createTableGames)
-
+        
         db?.execSQL("PRAGMA foreign_keys=ON;")
         val createTableOwnedGames = "CREATE TABLE ${TABLE_OWNED_GAMES}(\n" +
                 "  $OWNED_GAMES_USERID REFERENCES ${TABLE_USERS}(${OWNED_GAMES_USERID}),\n" +
@@ -58,9 +62,23 @@ class DatabaseHandler(var context: Context) :
         db?.execSQL(createTableOwnedGames)
 
     }
+    override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
+    }
 
+    fun addUser(id: String, name: String, password: String, theme: String): Boolean {
 
-    override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {
+        val db = this.writableDatabase
+        val cv = ContentValues()
+
+        cv.put(USERS_USERID, id)
+        cv.put(USERS_USERNAME, name)
+        cv.put(USERS_PASSWORD, password)
+        cv.put(USERS_THEME, theme)
+
+        val insert = db.insert(TABLE_USERS, null, cv)
+        db.close()
+
+        return insert != -1L
     }
 
 }

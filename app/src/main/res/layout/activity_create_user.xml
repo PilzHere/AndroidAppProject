@@ -4,44 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#9E231F1F">
+    android:background="#9E231F1F"
+    tools:context=".CreateUserActivity">
 
 
-    <Button
-        android:id="@+id/btn_toAddOwnedGame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="@string/btnAddOwnedGame"
-        app:layout_constraintBottom_toTopOf="@+id/btn_logOut"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.668"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn_logOut"
+        android:id="@+id/btn_createUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Logout"
-        app:iconTint="#00FFFFFF"
+        android:layout_marginBottom="276dp"
+        android:text="Create"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.126"
-        app:rippleColor="#FFFFFF" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/btn_toSearch"
+    <EditText
+        android:id="@+id/plt_createUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="@string/Search"
-        app:layout_constraintBottom_toTopOf="@+id/btn_logOut"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/pass_createUserPass"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.066"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn_toAddOwnedGame" />
+        tools:text="@string/createUserName" />
+
+    <EditText
+        android:id="@+id/pass_createUserPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/btn_createUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@string/createUserPassword" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

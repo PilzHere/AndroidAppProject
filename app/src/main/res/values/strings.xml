@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">AndroidAppProject</string>
+    <string name="btn_login">Login</string>
+    <string name="btn_createUser">Create user</string>
+    <string name="userName" />
+    <string name="password" />
+    <string name="btn_Search" />
+    <string name="btnAddOwnedGame">Add owned game</string>
+    <string name="Search">Search</string>
+    <string name="Logout">Log out</string>
+    <string name="miTheme">Theme</string>
+    <string name="miProfile">Profile</string>
 </resources>
