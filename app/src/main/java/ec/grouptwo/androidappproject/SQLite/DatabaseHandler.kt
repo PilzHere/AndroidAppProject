@@ -14,6 +14,8 @@ import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.USERS_PASSWORD
 import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.USERS_THEME
 import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.USERS_USERID
 import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.USERS_USERNAME
+import ec.grouptwo.androidappproject.user.User
+import java.util.ArrayList
 
 
 class DatabaseHandler(var context: Context) :
@@ -22,8 +24,6 @@ class DatabaseHandler(var context: Context) :
     override fun onCreate(db: SQLiteDatabase?) {
         createDB(db)
         createForeignKeyDB(db)
-
-
     }
 
     private fun createDB(db: SQLiteDatabase?) {
@@ -55,15 +55,10 @@ class DatabaseHandler(var context: Context) :
 
     }
 
-
     fun addUser(id: String, name: String, password: String, theme: String): Boolean {
-
 
         val db = this.writableDatabase
         val cv = ContentValues()
-
-
-
 
         cv.put(USERS_USERID, id)
         cv.put(USERS_USERNAME, name)
@@ -74,8 +69,5 @@ class DatabaseHandler(var context: Context) :
         db.close()
 
         return insert != -1L
-
-
     }
-
 }
