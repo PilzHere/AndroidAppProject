@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         val database = DatabaseHandler(this)
         val databaseHelper = database.writableDatabase
 
+        Log.d("TAG", database.checkDatabaseExists().toString())
     }
 
 
