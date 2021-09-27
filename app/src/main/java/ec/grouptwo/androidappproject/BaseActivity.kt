@@ -9,11 +9,18 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import ec.grouptwo.androidappproject.user.User
 
 open class BaseActivity : AppCompatActivity() {
+    lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val userName = intent.getStringExtra("Username")
+        val userId = intent.getStringExtra("Id")
+        val userTheme = intent.getStringExtra("theme")
+
+        user = User(userName!!, userId!!, "", userTheme!!)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -39,7 +46,10 @@ open class BaseActivity : AppCompatActivity() {
                 profileDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 val tvClose: TextView = profileDialog.findViewById(R.id.tvProfileClose)
                 val tvLogout: TextView = profileDialog.findViewById(R.id.tvProfileLogoutBtn)
-                setUserProfile(profileDialog)
+
+
+
+                setUserProfile(profileDialog, user)
 
                 tvClose.setOnClickListener {
                     profileDialog.dismiss()
@@ -55,17 +65,25 @@ open class BaseActivity : AppCompatActivity() {
         return true
     }
 
-    fun setUserProfile(profileDialog: Dialog) {
+    fun setUserProfile(profileDialog: Dialog, userInProfile: User) {
         val tvName: TextView = profileDialog.findViewById(R.id.tvProfileName)
         val tvCityCountry: TextView = profileDialog.findViewById(R.id.tvProfileCityCountry)
         val tvAmountGames: TextView = profileDialog.findViewById(R.id.tvProfieAmountGames)
         val tvAmountFriends: TextView = profileDialog.findViewById(R.id.tvProfileAmountFriends)
         val tvAmountDeals: TextView = profileDialog.findViewById(R.id.tvProfileAmountDeals)
 
-        tvName.text = "Firstname Lastname"
+        tvName.text = userInProfile.name
         tvCityCountry.text = "Malmö, Sweden"
-        tvAmountDeals.text ="11"
-        tvAmountFriends.text ="5"
-        tvAmountGames.text ="15"
+        tvAmountDeals.text = "11"
+        tvAmountFriends.text = "5"
+        tvAmountGames.text = "15"
+    }
+
+    fun forwardUser(intent: Intent): Intent {
+        intent.putExtra("Username", user.name)
+        intent.putExtra("Id", user.userID)
+        intent.putExtra("theme", user.theme)
+
+        return intent
     }
 }
