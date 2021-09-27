@@ -3,6 +3,7 @@ package ec.grouptwo.androidappproject
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import ec.grouptwo.androidappproject.user.User
 
 
 class LoggedInActivity : BaseActivity() {
@@ -12,13 +13,11 @@ class LoggedInActivity : BaseActivity() {
         setContentView(R.layout.activity_logged_in)
 
 
-        val userName = intent.getStringExtra("USERNAME")
-        val passWord = intent.getStringExtra("PASSWORD")
+        val userName = intent.getStringExtra("Username")
+        val userId = intent.getStringExtra("Id")
+        val userTheme = intent.getStringExtra("theme")
 
-        val newUserName = intent.getStringExtra("NEWUSERNAME")
-        val newPassWord = intent.getStringExtra("NEWPASSWORD")
-
-        //println("Hello " + userName + " your password is " + passWord)
+        val user = User(userName!!,userId!!,"",userTheme!!)
 
 
         val logOutButton = findViewById<Button>(R.id.btn_logOut)
@@ -39,8 +38,8 @@ class LoggedInActivity : BaseActivity() {
         val toAddOwnedGameButton = findViewById<Button>(R.id.btn_toAddOwnedGame)
         toAddOwnedGameButton.setOnClickListener {
             val intent = Intent(this, AddOwnedGameActivity::class.java)
-            intent.putExtra("USERID", "1") // TODO: This should be an int from database.
-            intent.putExtra("USERNAME", userName) // Do I need to do this here?
+            intent.putExtra("USERID", user.userID) // TODO: This should be an int from database.
+            intent.putExtra("USERNAME", user.name) // Do I need to do this here?
 
             startActivity(intent)
         }
