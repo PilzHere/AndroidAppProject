@@ -28,7 +28,7 @@ class CreateUserActivity : AppCompatActivity() {
             //intent.putExtra("USERID", "1")
 
              val DatabaseHandler1 = DatabaseHandler(baseContext)
-            DatabaseHandler1.addUser("1234", userName!!, passWord!!, "dark")
+            DatabaseHandler1.addUser(userName!!, passWord!!, "dark")
 
             intent.putExtra("NEWUSERNAME", userName)
             intent.putExtra("NEWPASSWORD", passWord)

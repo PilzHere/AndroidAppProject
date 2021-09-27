@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import ec.grouptwo.androidappproject.SQLite.DatabaseHandler
 import ec.grouptwo.androidappproject.SQLite.Query
@@ -23,9 +24,6 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         val database = DatabaseHandler(this)
-        val databaseHelper = database.writableDatabase
-
-
         val button = findViewById<Button>(R.id.btn_login)
         button.setOnClickListener {
 
@@ -36,12 +34,27 @@ class MainActivity : AppCompatActivity() {
             passWord = passwordText.text.toString()
             /*userName=R.id.plt_forLogin.toString()
             passWord=R.id.pass_forLogin.toString()*/
+            if (userName!!.isEmpty() || passWord!!.isEmpty()) {
+                Toast.makeText(this, "Username or password is empty!", Toast.LENGTH_SHORT).show()
+            } else {
+                if (database.checkUserLogIn(userName!!, passWord!!)) {
+                    val intent = Intent(this, LoggedInActivity::class.java)
+                    val user = database.getUser(userName!!, passWord!!)
+                    if (user != null) {
+                        intent.putExtra("Username", user.name)
+                        intent.putExtra("Id", user.userID)
+                        intent.putExtra("theme", user.theme)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this,"Could not get user from database", Toast.LENGTH_SHORT).show()
+                    }
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(this, "Username or password is wrong!", Toast.LENGTH_SHORT).show()
+                }
+            }
 
-            val intent = Intent(this, LoggedInActivity::class.java)
-            intent.putExtra("USERID", "1") // TODO: This should be an int from database.
-            intent.putExtra("USERNAME", userName)
-            intent.putExtra("PASSWORD", passWord)
-            startActivity(intent)
+
         }
     }
 }

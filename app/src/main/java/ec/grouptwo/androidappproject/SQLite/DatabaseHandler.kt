@@ -4,7 +4,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.provider.BaseColumns
 import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.OWNED_GAMES_GAMEID
 import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.OWNED_GAMES_USERID
 import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.TABLE_GAMES
@@ -13,13 +12,11 @@ import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.TABLE_USERS
 import java.io.File
 import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.USERS_PASSWORD
 import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.USERS_THEME
-import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.USERS_USERID
 import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.USERS_USERNAME
 import ec.grouptwo.androidappproject.user.User
-import java.util.ArrayList
 
 
-class DatabaseHandler(var context: Context) :
+class DatabaseHandler(context: Context) :
     SQLiteOpenHelper(context, Query.FeedEntry.DATABASE_NAME, null, 1) {
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -31,8 +28,8 @@ class DatabaseHandler(var context: Context) :
         deleteUserByID(8, db)
     }
 
-    private fun deleteUserByID(id : Int, db: SQLiteDatabase?){
-        db?.delete( "users", "userID=$id", null)
+    private fun deleteUserByID(id: Int, db: SQLiteDatabase?) {
+        db?.delete("users", "userID=$id", null)
     }
 
     fun checkDatabaseExists(): Boolean {
@@ -40,7 +37,42 @@ class DatabaseHandler(var context: Context) :
         val file = File(fileName)
         return file.exists()
     }
-    
+
+
+    fun checkUserLogIn(username: String, password: String): Boolean {
+        val checkUserQuery =
+            "SELECT * FROM $TABLE_USERS WHERE $USERS_USERNAME = '$username' AND $USERS_PASSWORD = '$password'"
+        val db = this.readableDatabase
+
+        val cursor = db.rawQuery(checkUserQuery, null)
+        val valueFromCursor = cursor.count
+        cursor.close()
+        return valueFromCursor > 0
+    }
+
+    fun getUser(username: String, password: String): User? {
+        var user: User
+        val checkUserQuery =
+            "SELECT * FROM $TABLE_USERS WHERE $USERS_USERNAME = '$username' AND $USERS_PASSWORD = '$password'"
+        val db = this.readableDatabase
+
+        val cursor = db.rawQuery(checkUserQuery, null)
+        if (cursor.moveToFirst()) {
+            val usersId = cursor.getInt(0)
+            val usersName = cursor.getString(1)
+            val usersTheme = cursor.getString(2)
+            val usersPassword = "Nothing here"
+
+            user = User(usersName, usersId.toString(), usersPassword, usersTheme)
+            cursor.close()
+            return user
+        } else {
+            cursor.close()
+            return null   // Do nothing
+        }
+
+    }
+
 
     private fun createDB(db: SQLiteDatabase?) {
         val createTableUsers = "CREATE TABLE ${Query.FeedEntry.TABLE_USERS} (" +
@@ -55,7 +87,7 @@ class DatabaseHandler(var context: Context) :
                 "${Query.FeedEntry.GAMES_NAME} VARCHAR(256), " +
                 "${Query.FeedEntry.GAMES_PRICE} VARCHAR(256) )\n"
         db?.execSQL(createTableGames)
-        
+
         db?.execSQL("PRAGMA foreign_keys=ON;")
         val createTableOwnedGames = "CREATE TABLE ${TABLE_OWNED_GAMES}(\n" +
                 "  $OWNED_GAMES_USERID REFERENCES ${TABLE_USERS}(${OWNED_GAMES_USERID}),\n" +
@@ -64,15 +96,15 @@ class DatabaseHandler(var context: Context) :
         db?.execSQL(createTableOwnedGames)
 
     }
+
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
     }
 
-    fun addUser(id: String, name: String, password: String, theme: String): Boolean {
+    fun addUser(name: String, password: String, theme: String): Boolean {
 
         val db = this.writableDatabase
         val cv = ContentValues()
 
-        cv.put(USERS_USERID, id)
         cv.put(USERS_USERNAME, name)
         cv.put(USERS_PASSWORD, password)
         cv.put(USERS_THEME, theme)
