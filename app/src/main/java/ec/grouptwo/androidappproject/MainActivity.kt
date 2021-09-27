@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
     var userName: String? = null
     var passWord: String? = null
 
-    private lateinit var checkDatabaseButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -32,8 +31,7 @@ class MainActivity : AppCompatActivity() {
 
             userName = userNameText.text.toString()
             passWord = passwordText.text.toString()
-            /*userName=R.id.plt_forLogin.toString()
-            passWord=R.id.pass_forLogin.toString()*/
+
             if (userName!!.isEmpty() || passWord!!.isEmpty()) {
                 Toast.makeText(this, "Username or password is empty!", Toast.LENGTH_SHORT).show()
             } else {

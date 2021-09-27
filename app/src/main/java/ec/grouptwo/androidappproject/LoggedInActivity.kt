@@ -12,14 +12,6 @@ class LoggedInActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_logged_in)
 
-
-        val userName = intent.getStringExtra("Username")
-        val userId = intent.getStringExtra("Id")
-        val userTheme = intent.getStringExtra("theme")
-
-        val user = User(userName!!,userId!!,"",userTheme!!)
-
-
         val logOutButton = findViewById<Button>(R.id.btn_logOut)
         logOutButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
@@ -31,16 +23,14 @@ class LoggedInActivity : BaseActivity() {
         val toSearchButton = findViewById<Button>(R.id.btn_toSearch)
         toSearchButton.setOnClickListener {
             val intent = Intent(this, SearchGameActivity::class.java)
-
+            forwardUser(intent)
             startActivity(intent)
         }
 
         val toAddOwnedGameButton = findViewById<Button>(R.id.btn_toAddOwnedGame)
         toAddOwnedGameButton.setOnClickListener {
             val intent = Intent(this, AddOwnedGameActivity::class.java)
-            intent.putExtra("USERID", user.userID) // TODO: This should be an int from database.
-            intent.putExtra("USERNAME", user.name) // Do I need to do this here?
-
+            forwardUser(intent)
             startActivity(intent)
         }
     }
