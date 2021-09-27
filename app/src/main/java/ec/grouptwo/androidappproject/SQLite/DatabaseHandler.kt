@@ -15,6 +15,8 @@ import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.USERS_PASSWORD
 import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.USERS_THEME
 import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.USERS_USERID
 import ec.grouptwo.androidappproject.SQLite.Query.FeedEntry.USERS_USERNAME
+import ec.grouptwo.androidappproject.user.User
+import java.util.ArrayList
 
 
 class DatabaseHandler(var context: Context) :
@@ -80,5 +82,4 @@ class DatabaseHandler(var context: Context) :
 
         return insert != -1L
     }
-
 }
