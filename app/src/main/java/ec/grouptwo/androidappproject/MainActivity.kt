@@ -2,10 +2,14 @@ package ec.grouptwo.androidappproject
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import ec.grouptwo.androidappproject.SQLite.DatabaseHandler
+import ec.grouptwo.androidappproject.SQLite.Query
+import ec.grouptwo.androidappproject.user.User
+
 
 class MainActivity : AppCompatActivity() {
     var userName: String? = null
@@ -20,6 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         val database = DatabaseHandler(this)
         val databaseHelper = database.writableDatabase
+
 
         val button = findViewById<Button>(R.id.btn_login)
         button.setOnClickListener {
