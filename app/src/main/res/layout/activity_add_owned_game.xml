@@ -58,8 +58,9 @@
 
     <ImageView
         android:id="@+id/iv_thumbnail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:adjustViewBounds="true"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/textv_title_of_game_found"
         app:layout_constraintEnd_toEndOf="parent"

@@ -85,7 +85,7 @@ class AddOwnedGameActivity : BaseActivity() {
                 if (currentGame != null) {
                     if (currentGame?.thumb?.isNotEmpty() == true) {
                         iv_thumbnail.load(currentGame?.thumb) {
-                            transformations(CircleCropTransformation())
+                            (CircleCropTransformation())
 
                         }
                     }
