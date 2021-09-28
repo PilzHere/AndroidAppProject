@@ -23,6 +23,8 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         //var sharedPref = SharedPref(this)
 
@@ -63,6 +65,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
+
+
+
+        setTheme(R.style.Theme_AndroidAppProject)
 
         val database = DatabaseHandler(this)
         val button = findViewById<Button>(R.id.btn_login)
