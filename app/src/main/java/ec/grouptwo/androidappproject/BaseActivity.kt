@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import ec.grouptwo.androidappproject.user.User
@@ -39,6 +40,8 @@ open class BaseActivity : AppCompatActivity() {
             R.id.miTheme -> {
                 // TODO: Add functions to this method
                 println("miTheme is clicked")
+
+
             }
 
             R.id.miProfile -> {
