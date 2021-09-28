@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="DefaultTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="Background_Color">#707070</item>
+        <item name="Text_Color">#FFFFFF</item>
+        <item name="Button_Color">#5473B5</item>
+        <item name="Header_Color">#151E31</item>
+        <item name="Header_Icon_Color">#FFFFFF</item>
+        <item name="Header_Text_Color">#C3CCDF</item>
+
+
+
+    </style>
+
+
+    <style name="LightTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="Background_Color">#FFFFFF</item>
+        <item name="Text_Color">#000000</item>
+        <item name="Button_Color">#5473B5</item>
+        <item name="Header_Color">#647292</item>
+        <item name="Header_Icon_Color">#FFFFFF</item>
+        <item name="Header_Text_Color">#FFFFFF</item>
+
+
+
+    </style>
+
+
+</resources>

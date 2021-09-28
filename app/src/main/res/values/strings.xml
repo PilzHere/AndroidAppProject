@@ -10,4 +10,5 @@
     <string name="Logout">Log out</string>
     <string name="miTheme">Theme</string>
     <string name="miProfile">Profile</string>
+    <string name="switchTest">Switch</string>
 </resources>
