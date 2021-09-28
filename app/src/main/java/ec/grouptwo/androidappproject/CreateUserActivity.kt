@@ -24,14 +24,11 @@ class CreateUserActivity : AppCompatActivity() {
             userName =  userNameText.text.toString()
             passWord = passText.text.toString()
 
-            val intent = Intent(this, LoggedInActivity::class.java)
-            //intent.putExtra("USERID", "1")
+            val intent = Intent(this, MainActivity::class.java)
 
              val DatabaseHandler1 = DatabaseHandler(baseContext)
             DatabaseHandler1.addUser(userName!!, passWord!!, "dark")
 
-            intent.putExtra("NEWUSERNAME", userName)
-            intent.putExtra("NEWPASSWORD", passWord)
             startActivity(intent)
 
 
