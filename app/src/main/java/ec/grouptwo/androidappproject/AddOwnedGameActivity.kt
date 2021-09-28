@@ -4,12 +4,10 @@ import android.content.ContentValues
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.Menu
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import ec.grouptwo.androidappproject.SQLite.DatabaseHandler
 import ec.grouptwo.androidappproject.SQLite.Query
 import ec.grouptwo.androidappproject.game.Game
@@ -28,7 +26,7 @@ class AddOwnedGameActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_owned_game)
 
-        val db = DatabaseHandler(this) // Is this needed in each class?
+        val db = DatabaseHandler(this)
 
         etGameTitle = findViewById(R.id.editText_game_title)
         textGameTitleFound = findViewById(R.id.textv_title_of_game_found)
@@ -54,13 +52,11 @@ class AddOwnedGameActivity : BaseActivity() {
 
         buttonAddGameToList.setOnClickListener {
             if (etGameTitle.text.isNotEmpty() && gameFound && currentGameId.isNotEmpty() && currentGame != null) {
-                val userId =
-                    intent.getStringExtra("USERID") // TODO: this should be used instead of "1".
-
+                val userId = user.userID
                 val gameId = currentGameId
 
-                if (!gameAlreadyOwnedbyUser(db, "1", gameId)) {
-                    putGameIntoDatabase(db, "1", gameId)
+                if (!gameAlreadyOwnedbyUser(db, userId, gameId)) {
+                    putGameIntoDatabase(db, userId, gameId)
                 }
             } else {
                 textGameDatabaseMessage.setText("There was an error. Search again.")
@@ -75,9 +71,8 @@ class AddOwnedGameActivity : BaseActivity() {
 
             if (apiClient.gameList?.size != 0) {
                 currentGame = apiClient.gameList?.get(0)
-                //textGameTitleFound.setText(apiClient.gameList?.get(0)?.external)
                 textGameTitleFound.setText(currentGame?.external)
-                currentGameId = currentGame?.gameID ?: currentGameId // i dont know.
+                currentGameId = currentGame?.gameID ?: currentGameId // Weird.
                 gameFound = true
             } else {
                 gameFound = false
@@ -92,7 +87,7 @@ class AddOwnedGameActivity : BaseActivity() {
 
     private fun putGameIntoDatabase(db: DatabaseHandler, userId: String, gameId: String) {
         val values = ContentValues().apply {
-            put(Query.FeedEntry.OWNED_GAMES_USERID, userId) // TODO: "1" // should be an int
+            put(Query.FeedEntry.OWNED_GAMES_USERID, userId)
             put(Query.FeedEntry.OWNED_GAMES_GAMEID, gameId)
         }
 
@@ -112,7 +107,7 @@ class AddOwnedGameActivity : BaseActivity() {
         db: DatabaseHandler,
         userId: String,
         gameId: String
-    ): Boolean { // userid should be int
+    ): Boolean {
         // Define a projection that specifies which columns from the database
         // you will actually use after this query.
         val projection =
@@ -120,7 +115,7 @@ class AddOwnedGameActivity : BaseActivity() {
 
         // Filter results WHERE "title" = 'My Title'
         val selection = "${Query.FeedEntry.OWNED_GAMES_USERID} = ?"
-        val selectionArgs = arrayOf("1") // TODO: Should be userid, temporarily 1.
+        val selectionArgs = arrayOf(userId)
 
         // How you want the results sorted in the resulting Cursor
         val sortOrder = "${Query.FeedEntry.OWNED_GAMES_GAMEID} DESC"
