@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#9E231F1F"
+    android:background="#C8C2D1"
     tools:context=".CreateUserActivity">
-
 
 
     <Button
@@ -17,29 +16,33 @@
         android:text="Create"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="#B67C7C"
+        />
 
     <EditText
         android:id="@+id/plt_createUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="New Username"
         android:inputType="textPersonName"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/pass_createUserPass"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="@string/createUserName" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/pass_createUserPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="New Password"
         android:inputType="textPassword"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btn_createUser"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="@string/createUserPassword" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

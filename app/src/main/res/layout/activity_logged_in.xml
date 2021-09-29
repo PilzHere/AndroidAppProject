@@ -4,44 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#9E231F1F">
+    android:background="#C8C2D1">
 
 
     <Button
         android:id="@+id/btn_toAddOwnedGame"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#586A85"
         android:text="@string/btnAddOwnedGame"
-        app:layout_constraintBottom_toTopOf="@+id/btn_logOut"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.668"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_logOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="113dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="212dp"
+        android:backgroundTint="#586A85"
         android:text="@string/Logout"
+        android:textStyle="bold"
         app:iconTint="#00FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintHorizontal_bias="0.053"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.126"
         app:rippleColor="#FFFFFF" />
 
     <Button
         android:id="@+id/btn_toSearch"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="124dp"
+        android:backgroundTint="#586A85"
         android:text="@string/Search"
-        app:layout_constraintBottom_toTopOf="@+id/btn_logOut"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn_toAddOwnedGame" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="369dp"
+        android:layout_height="455dp"
+        android:layout_marginStart="112dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/sans" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
